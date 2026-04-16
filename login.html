@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل الدخول - حافلتي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Tajawal", sans-serif;
+      background: #f5f7fb;
+      color: #0b1b3b;
+    }
+
+    /* HEADER */
+    header {
+      background: #0b1b3b;
+      padding: 15px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .logo-icon {
+      background: #ffc928;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #0b1b3b;
+    }
+
+    .nav-links a {
+      color: white;
+      margin-left: 18px;
+      font-size: 15px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffc928;
+    }
+
+    /* LOGIN BOX */
+    .login-container {
+      max-width: 420px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 10px;
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    .login-container p {
+      color: #666;
+      margin-bottom: 25px;
+      font-size: 15px;
+    }
+
+    .input-group {
+      text-align: right;
+      margin-bottom: 18px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 12px;
+      background: #ffc928;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #0b1b3b;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-login:hover {
+      background: #ffdd57;
+    }
+
+    .login-footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .login-footer a {
+      color: #0b1b3b;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
+      <div class="logo" onclick="location.href='index.html'">
+        <div class="logo-icon">🚌</div>
+        <div>
+          <div style="font-size:18px; font-weight:800;">حافلتي</div>
+          <div style="font-size:13px; opacity:0.8;">حلول نقل مدرسية مبتكرة</div>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="tracking.html">تتبع مباشر</a>
+        <a href="routes.html">المسارات</a>
+        <a href="register.html">التسجيل</a>
+        <a href="contact.html">الدعم الفني</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOGIN BOX -->
+  <div class="login-container">
+    <h2>تسجيل الدخول</h2>
+    <p>أدخل بياناتك للوصول إلى حسابك</p>
+
+    <div class="input-group">
+      <label>البريد الإلكتروني</label>
+      <input type="email" placeholder="example@email.com">
+    </div>
+
+    <div class="input-group">
+      <label>كلمة المرور</label>
+      <input type="password" placeholder="••••••••">
+    </div>
+
+    <button class="btn-login" onclick="location.href='index.html'">تسجيل الدخول</button>
+
+    <div class="login-footer">
+      ما عندك حساب؟  
+      <a href="register.html">سجّل الآن</a>
+    </div>
+  </div>
+
+</body>
+</html>
