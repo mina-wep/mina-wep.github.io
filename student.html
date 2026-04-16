@@ -2,86 +2,105 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تسجيل الطالب</title>
+    <title>تسجيل الرحلة</title>
+
     <style>
         body {
-            font-family: "Tajawal", sans-serif;
-            background-color: #f7f9fc;
             margin: 0;
-            padding: 0;
+            font-family: "Tajawal", sans-serif;
+            background: linear-gradient(135deg, #1e90ff, #7ed957, #ffdd57);
+            background-size: 300% 300%;
+            animation: gradientMove 12s ease infinite;
+            color: #fff;
+            padding-top: 90px;
         }
-        header {
-            background-color: #4a90e2;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-size: 26px;
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .container {
-            width: 60%;
-            margin: 40px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 0 10px #ddd;
-        }
-        label {
-            font-size: 18px;
-            margin-top: 10px;
-            display: block;
-        }
-        input, select {
+
+        .topbar {
             width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 16px;
+            height: 75px;
+            background-color: #FFF3B0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 25px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 9999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
-        button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 14px;
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
+
+        .logo {
+            height: 60px;
             cursor: pointer;
         }
-        a {
-            display: block;
+
+        .section {
+            width: 80%;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.18);
+            padding: 35px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
             text-align: center;
-            margin-top: 20px;
-            color: #4a90e2;
+        }
+
+        input, select {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+            font-size: 18px;
+        }
+
+        .btn-main {
+            padding: 15px 35px;
+            background: #ffffff;
+            color: #1e90ff;
+            font-size: 22px;
+            border-radius: 14px;
             text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-main:hover {
+            transform: scale(1.07);
+            background: #e8f4ff;
         }
     </style>
 </head>
+
 <body>
 
-<header>تسجيل الطالب</header>
+<div class="topbar">
+    <a href="index.html">
+        <img src="https://raw.githubusercontent.com/mina-wep/-/refs/heads/main/WhatsApp%20Image%202026-04-16%20at%202.24.43%20AM.jpeg" class="logo">
+    </a>
+</div>
 
-<div class="container">
-    <label>اسم الطالب</label>
-    <input type="text">
+<div class="section">
+    <h1>تسجيل الرحلة</h1>
 
-    <label>الصف الدراسي</label>
+    <input type="text" placeholder="اسم الطالب">
+    <input type="text" placeholder="الصف الدراسي">
+    <input type="text" placeholder="عنوان المنزل">
     <select>
-        <option>الصف الأول</option>
-        <option>الصف الثاني</option>
-        <option>الصف الثالث</option>
-        <option>الصف الرابع</option>
-        <option>الصف الخامس</option>
-        <option>الصف السادس</option>
+        <option>اختر الفترة</option>
+        <option>صباحية</option>
+        <option>مسائية</option>
     </select>
 
-    <label>رقم ولي الأمر</label>
-    <input type="text">
-
-    <button>تسجيل</button>
-
-    <a href="index.html">العودة للصفحة الرئيسية</a>
+    <button class="btn-main">تسجيل</button>
 </div>
 
 </body>
