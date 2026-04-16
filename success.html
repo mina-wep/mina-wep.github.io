@@ -1,103 +1,166 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>تم التسجيل بنجاح</title>
+  <meta charset="UTF-8">
+  <title>لوحة المستخدم - حافلتي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Tajawal", sans-serif;
-            background: linear-gradient(135deg, #1e90ff, #7ed957, #ffdd57);
-            background-size: 300% 300%;
-            animation: gradientMove 12s ease infinite;
-            color: #fff;
-            padding-top: 90px;
-        }
+  <style>
+    body {
+      margin: 0;
+      font-family: "Tajawal", sans-serif;
+      background: #f5f7fb;
+      color: #0b1b3b;
+    }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    header {
+      background: #0b1b3b;
+      padding: 15px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
 
-        /* الشريط العلوي */
-        .topbar {
-            width: 100%;
-            height: 75px;
-            background-color: #FFF3B0;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding: 0 25px;
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: 9999;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
 
-        .logo {
-            height: 60px;
-            cursor: pointer;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
 
-        /* صندوق المحتوى */
-        .section {
-            width: 80%;
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.18);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            text-align: center;
-        }
+    .logo-icon {
+      background: #ffc928;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #0b1b3b;
+    }
 
-        h1 {
-            font-size: 40px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
 
-        p {
-            font-size: 22px;
-            margin-bottom: 30px;
-        }
+    .card:hover {
+      transform: scale(1.03);
+    }
 
-        .btn-main {
-            padding: 15px 35px;
-            background: #ffffff;
-            color: #1e90ff;
-            font-size: 22px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    .info-box {
+      max-width: 500px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      font-size: 16px;
+      line-height: 1.8;
+    }
 
-        .btn-main:hover {
-            transform: scale(1.07);
-            background: #e8f4ff;
-        }
-    </style>
+    .logout-btn {
+      display: block;
+      width: 200px;
+      margin: 30px auto;
+      padding: 12px;
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- الشريط العلوي -->
-<div class="topbar">
-    <a href="index.html">
-        <img src="https://raw.githubusercontent.com/mina-wep/-/refs/heads/main/WhatsApp%20Image%202026-04-16%20at%202.24.43%20AM.jpeg" class="logo">
-    </a>
-</div>
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
+      <div class="logo" onclick="location.href='index.html'">
+        <div class="logo-icon">🚌</div>
+        <div>
+          <div style="font-size:18px; font-weight:800;">حافلتي</div>
+          <div style="font-size:13px; opacity:0.8;">حلول نقل مدرسية مبتكرة</div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<!-- المحتوى -->
-<div class="section">
-    <h1>تم التسجيل بنجاح ✔️</h1>
-    <p>شكراً لك، تم حفظ بيانات الرحلة بنجاح.</p>
+  <!-- WELCOME -->
+  <h2 id="welcomeText" style="text-align:center; margin:30px 0; font-size:28px; font-weight:800;"></h2>
 
-    <a href="index.html" class="btn-main">العودة للصفحة الرئيسية</a>
-</div>
+  <!-- USER INFO -->
+  <div class="info-box">
+    <div><strong>العنوان:</strong> <span id="userAddress"></span></div>
+    <div><strong>رقم الجوال:</strong> <span id="userPhone"></span></div>
+    <div><strong>آخر حضور:</strong> <span id="lastAttendance">—</span></div>
+  </div>
+
+  <!-- ATTENDANCE OPTIONS -->
+  <div style="
+    display:flex;
+    gap:20px;
+    max-width:700px;
+    margin:20px auto;
+  ">
+
+    <div class="card" onclick="markAttendance('حاضر')">
+      <h3>سأحضر اليوم</h3>
+    </div>
+
+    <div class="card" onclick="markAttendance('غائب')">
+      <h3>لن أحضر اليوم</h3>
+    </div>
+
+  </div>
+
+  <button class="logout-btn" onclick="logout()">تسجيل خروج</button>
+
+  <script>
+    // عرض بيانات المستخدم
+    document.getElementById("welcomeText").innerText =
+      "مرحباً، " + (localStorage.getItem("userName") || "ضيف");
+
+    document.getElementById("userAddress").innerText =
+      localStorage.getItem("userAddress") || "—";
+
+    document.getElementById("userPhone").innerText =
+      localStorage.getItem("userPhone") || "—";
+
+    document.getElementById("lastAttendance").innerText =
+      localStorage.getItem("attendance") || "—";
+
+    // تسجيل الحضور
+    function markAttendance(status) {
+      localStorage.setItem("attendance", status);
+      document.getElementById("lastAttendance").innerText = status;
+      alert("تم تسجيل حضورك");
+    }
+
+    // تسجيل خروج
+    function logout() {
+      localStorage.clear();
+      location.href = "login.html";
+    }
+  </script>
 
 </body>
 </html>
