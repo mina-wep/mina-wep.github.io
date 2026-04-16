@@ -136,12 +136,18 @@
 
     <script>
       function saveUser() {
+
+        // حفظ بيانات المستخدم
         localStorage.setItem("userName", document.getElementById('name').value);
         localStorage.setItem("userEmail", document.getElementById('email').value);
         localStorage.setItem("userPhone", document.getElementById('phone').value);
         localStorage.setItem("userAddress", document.getElementById('address').value);
 
-        location.href = "dashboard.html";
+        // إشارة أنه تم التسجيل
+        localStorage.setItem("justRegistered", "yes");
+
+        // الانتقال لصفحة النجاح
+        location.href = "success.html";
       }
     </script>
   </div>
