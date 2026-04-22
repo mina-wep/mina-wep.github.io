@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تواصل معنا - حافلتي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Tajawal", sans-serif;
+      background: #f5f7fb;
+      color: #0b1b3b;
+    }
+
+    header {
+      background: #0b113b;
+      padding: 15px 0;
+      box-shadow: 0 20px 120px rgba(0,0,0,0.15);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .logo-icon {
+      background: #ffc028;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #0b113b;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    input, textarea, select {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      color: #0b1b3b;
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    .btn-send, .btn-home {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #ffc928;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #0b1b3b;
+      cursor: pointer;
+      transition: 0.2s;
+      display: block;
+      width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-send:hover, .btn-home:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <div class="logo" onclick="location.href='index.html'">
+        <div class="logo-icon">🚌</div>
+        <strong>حافلتي</strong>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTACT FORM -->
+  <div class="container">
+    <h2>تواصل معنا</h2>
+    <p style="opacity:0.8; margin-bottom:20px;">
+      يسعدنا تواصلك معنا في أي وقت
+    </p>
+
+    <input type="text" id="name" placeholder="الاسم الكامل">
+    <input type="email" id="email" placeholder="البريد الإلكتروني">
+
+    <!-- اختيار الباص -->
+    <select id="bus">
+      <option value="">اختر الباص</option>
+      <option value="باص حي المشهد">باص حي المشهد</option>
+      <option value="باص حي السميري">باص حي السميري</option>
+      <option value="باص حي العصيلي">باص حي العصيلي</option>
+      <option value="باص حي الزهرة">باص حي الزهرة</option>
+      <option value="باص حي الروضة">باص حي الروضة</option>
+    </select>
+
+    <textarea id="message" placeholder="اكتب رسالتك هنا..."></textarea>
+
+    <button class="btn-send" onclick="sendMessage()">إرسال الشكوى</button>
+
+    <button class="btn-home" onclick="location.href='index.html'">العودة للصفحة الرئيسية</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const bus = document.getElementById("bus").value;
+      const message = document.getElementById("message").value;
+
+      if (!name || !email || !bus || !message) {
+        alert("الرجاء تعبئة جميع الحقول");
+        return;
+      }
+
+      // تجهيز الشكوى
+      const complaint = {
+        name: name,
+        email: email,
+        bus: bus,
+        message: message,
+        date: new Date().toLocaleString("ar-SA")
+      };
+
+      // جلب الشكاوي القديمة
+      let list = JSON.parse(localStorage.getItem("complaintsList")) || [];
+
+      // إضافة الشكوى الجديدة
+      list.push(complaint);
+
+      // حفظ القائمة
+      localStorage.setItem("complaintsList", JSON.stringify(list));
+
+      alert("تم إرسال الشكوى بنجاح!");
+    }
+
+    // عند فتح الصفحة — نرجّع آخر البيانات
+    window.onload = function () {
+      document.getElementById("name").value =
+        localStorage.getItem("contactName") || "";
+
+      document.getElementById("email").value =
+        localStorage.getItem("contactEmail") || "";
+
+      document.getElementById("bus").value =
+        localStorage.getItem("contactBus") || "";
+
+      document.getElementById("message").value =
+        localStorage.getItem("contactMessage") || "";
+    };
+  </script>
+
+</body>
+</html>
