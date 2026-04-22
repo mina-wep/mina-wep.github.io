@@ -13,42 +13,72 @@
       color: #0b1b3b;
     }
 
+    /* الهيدر */
     header {
-      background: #0b113b;
-      padding: 15px 0;
-      box-shadow: 0 20px 120px rgba(0,0,0,0.15);
+      background:#0b113b;
+      padding:14px 0;
+      box-shadow:0 0 25px rgba(0,0,0,0.35);
+      position:sticky;
+      top:0;
+      z-index:999;
     }
 
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: white;
+    .nav {
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      color:#fff;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
+    .logo img {
+      height:auto;
+      width:auto;
+      max-height:80px;
+      object-fit:contain;
+      border-radius:0;
+      background:none;
+      padding:0;
+      box-shadow:none;
     }
 
-    .logo-icon {
-      background: #ffc028;
-      width: 45px;
-      height: 45px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: bold;
-      color: #0b113b;
+    .nav_links {
+      display:flex;
+      align-items:center;
+      gap:20px;
     }
 
+    .nav_links a {
+      color:#fff;
+      text-decoration:none;
+      font-size:15px;
+      opacity:0.9;
+      transition:0.25s;
+    }
+
+    .nav_links a:hover {
+      opacity:1;
+    }
+
+    .btn-login-nav {
+      padding:8px 18px;
+      background:#ffc928;
+      border:none;
+      border-radius:20px;
+      font-size:14px;
+      font-weight:700;
+      color:#0b113b;
+      cursor:pointer;
+      transition:0.25s;
+    }
+
+    .btn-login-nav:hover {
+      opacity:0.9;
+    }
+
+    /* نموذج التواصل */
     .container {
       max-width: 500px;
       margin: 60px auto;
@@ -99,18 +129,27 @@
 
 <body>
 
-  <!-- HEADER -->
+  <!-- الهيدر الجديد -->
   <header>
-    <nav>
+    <div class="nav">
+
       <div class="logo" onclick="location.href='index.html'">
-       <img src="https://raw.githubusercontent.com/mina-wep/mina-wep.github.io/refs/heads/main/WhatsApp%20Image%202026-04-22%20at%202.38.28%20PM.jpeg"
-     style="width:55px; height:55px; border-radius:12px; object-fit:cover;">
-        <strong>حافلتي</strong>
+        <img src="https://raw.githubusercontent.com/mina-wep/mina-wep.github.io/refs/heads/main/WhatsApp%20Image%202026-04-22%20at%202.38.28%20PM.jpeg">
       </div>
-    </nav>
+
+      <div class="nav_links">
+        <a href="index.html">الصفحة الرئيسية</a>
+        <a href="tracking.html">تتبع مباشر</a>
+        <a href="routes.html">المسارات</a>
+        <a href="register.html">التسجيل</a>
+        <a href="support.html">الدعم</a>
+        <button onclick="location.href='login.html'" class="btn-login-nav">الدخول</button>
+      </div>
+
+    </div>
   </header>
 
-  <!-- CONTACT FORM -->
+  <!-- نموذج التواصل -->
   <div class="container">
     <h2>تواصل معنا</h2>
     <p style="opacity:0.8; margin-bottom:20px;">
@@ -120,7 +159,6 @@
     <input type="text" id="name" placeholder="الاسم الكامل">
     <input type="email" id="email" placeholder="البريد الإلكتروني">
 
-    <!-- اختيار الباص -->
     <select id="bus">
       <option value="">اختر الباص</option>
       <option value="باص حي المشهد">باص حي المشهد</option>
@@ -149,7 +187,6 @@
         return;
       }
 
-      // تجهيز الشكوى
       const complaint = {
         name: name,
         email: email,
@@ -158,19 +195,13 @@
         date: new Date().toLocaleString("ar-SA")
       };
 
-      // جلب الشكاوي القديمة
       let list = JSON.parse(localStorage.getItem("complaintsList")) || [];
-
-      // إضافة الشكوى الجديدة
       list.push(complaint);
-
-      // حفظ القائمة
       localStorage.setItem("complaintsList", JSON.stringify(list));
 
       alert("تم إرسال الشكوى بنجاح!");
     }
 
-    // عند فتح الصفحة — نرجّع آخر البيانات
     window.onload = function () {
       document.getElementById("name").value =
         localStorage.getItem("contactName") || "";
